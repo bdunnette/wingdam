@@ -11,11 +11,18 @@ if (Meteor.isClient) {
   });
   
   Template.add_item.events({
-	  'click': function() {
+	  'click .submit': function() {
 		  Assets.insert({
 			  title: $('.asset').val()
 		  });
 		  $('.asset').val('');
+	  }
+  });
+  
+  Template.asset.events({
+	  'click .delete': function() {
+		  console.log(this);
+		  Assets.remove(this._id);
 	  }
   });
 }
