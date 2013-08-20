@@ -9,5 +9,8 @@ insecure
 preserve-inputs
 accounts-ui
 accounts-google
-bootstrap
 jquery
+collection-api
+less
+meteor-file
+bootstrap-3

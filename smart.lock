@@ -1,0 +1,27 @@
+{
+  "meteor": {},
+  "dependencies": {
+    "basePackages": {
+      "collection-api": {},
+      "meteor-file": {},
+      "bootstrap-3": {}
+    },
+    "packages": {
+      "collection-api": {
+        "git": "https://github.com/crazytoad/meteor-collectionapi.git",
+        "tag": "v0.1.15",
+        "commit": "b62c51f387287726cf3b64077f7bc69604ec2f5e"
+      },
+      "meteor-file": {
+        "git": "https://github.com/EventedMind/meteor-file.git",
+        "tag": "v0.0.6",
+        "commit": "b8824eb42d51276ac4c8bc0aa5ca55b6f0872c5e"
+      },
+      "bootstrap-3": {
+        "git": "https://github.com/mangasocial/meteor-bootstrap-3.git",
+        "tag": "v0.3.2",
+        "commit": "a09f87b01f625ca86d97f93206e7ff475cf3db3b"
+      }
+    }
+  }
+}
