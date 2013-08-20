@@ -3,11 +3,42 @@
 </head>
 
 <body>
-  {{> hello}}
+  <div class="container">
+	  {{> content}}
+  </div>
 </body>
 
-<template name="hello">
-  <h1>Hello World!</h1>
-  {{greeting}}
-  <input type="button" value="Click" />
+<template name="content">
+	<div class="row-fluid">
+		<h3>Assets</h3>
+	</div>
+	<div class="row-fluid">
+		{{#each assets}}
+			{{> asset}}
+		{{/each}}
+	</div>
+	{{log "foo"}}
+	{{#if currentUser}}
+		{{> add_item}}		
+	{{/if}}
+	<div class="row-fluid">
+		{{loginButtons}}
+	</div>
+</template>
+
+<template name="user">
+	<div class="span1">
+		<img width=64 src="{{services.google.picture}}" title="{{services.google.email}}">
+	</div>
+</template>
+
+<template name="asset">
+	<div class="span4">
+		{{title}}
+	</div>
+</template>
+
+<template name="add_item">
+	<input type="text" class="asset">
+	<button class="submit">Submit</button>
 </template>

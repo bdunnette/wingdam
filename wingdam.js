@@ -1,14 +1,22 @@
-if (Meteor.isClient) {
-  Template.hello.greeting = function () {
-    return "Welcome to wingdam.";
-  };
+Assets = new Meteor.Collection('assets');
 
-  Template.hello.events({
-    'click input' : function () {
-      // template data, if any, is available in 'this'
-      if (typeof console !== 'undefined')
-        console.log("You pressed the button");
-    }
+if (Meteor.isClient) {
+  Template.content.helpers({
+	  users: function() {
+		  return Meteor.users.find();
+	  },
+	  assets: function() {
+		  return Assets.find();
+	  }
+  });
+  
+  Template.add_item.events({
+	  'click': function() {
+		  Assets.insert({
+			  title: $('.asset').val()
+		  });
+		  $('.asset').val('');
+	  }
   });
 }
 
