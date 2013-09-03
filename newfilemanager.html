@@ -1,22 +1,20 @@
 <head>
-    <title>Example File Manager Using CollectionFS</title>
+    <title>WingDAM</title>
 </head>
 
 <body>
     <div class="container">
         <div style="float: right;">{{loginButtons align="right"}}</div>
-        <h1>Example File Manager Using CollectionFS</h1>
         {{#if loggedIn}}
+        <h1>Manage Images</h1>
         <ul>
             <li>Select one or more files to upload them.</li>
             <li>Drag one or more files onto the list.</li>
         </ul>
         {{> imgListArea}}
         {{else}}
-        <p>Welcome! Please create an account or log in to try out this example
-            CollectionFS app. Files that you upload are tied to your user
-            account, so you will not see anyone else's files, and they will not
-            see yours.</p>
+        <h1>Available Images</h1>
+        <p>Welcome! Please log in to upload or manage images.</p>
         {{/if}}
     </div>
     {{> dialogAddImg}}

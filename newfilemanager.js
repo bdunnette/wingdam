@@ -1,4 +1,3 @@
-Songs = new CollectionFS("songs", {autopublish: false});
 Images = new CollectionFS("images", {autopublish: false});
 
 //security
@@ -13,17 +12,9 @@ var allowRules = {
         return userId && file.owner === userId;
     }
 };
-Songs.allow(allowRules);
 Images.allow(allowRules);
 
 //filters
-Songs.filter({
-    allow: {
-        contentTypes: ['audio/*']
-    },
-    maxSize: 5242880 //5MB
-});
-
 Images.filter({
     allow: {
         contentTypes: ['image/*']
@@ -81,9 +72,7 @@ if (Meteor.isClient) {
             });
         }
     };
-    Songs.events({
-       'invalid': onInvalid 
-    });
+    
     Images.events({
        'invalid': onInvalid 
     });
@@ -182,9 +171,6 @@ if (Meteor.isServer) {
         sendVerificationEmail: false
     });
 
-    Meteor.publish("songs", function() {
-        return Songs.find({owner: this.userId}, {$sort: {uploadDate: -1}});
-    });
     Meteor.publish("images", function() {
         return Images.find({owner: this.userId}, {$sort: {uploadDate: -1}});
     });
