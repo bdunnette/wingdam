@@ -1,10 +1,11 @@
 {
-    "packages": {
-        "bootstrap-3": {},
-        "collectionFS": {
-			"git": "https://github.com/aldeed/Meteor-CollectionFS.git",
-			"branch": "master"
-        },
-        "handlebar-helpers": {}
-    }
+  "packages": {
+    "bootstrap-3": {},
+    "collectionFS": {
+      "git": "https://github.com/aldeed/Meteor-CollectionFS.git",
+      "branch": "master"
+    },
+    "handlebar-helpers": {},
+    "collection-api": {}
+  }
 }
