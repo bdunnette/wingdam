@@ -110,7 +110,7 @@
 <template name="imgList">
     {{#if cfsHasFiles "Images"}}
     {{#each cfsFiles "Images"}}
-    {{> image}}
+    <div class="col-lg-2">{{> image}}</div>
     {{/each}}
     {{else}}
     <div class="noItems">You have not added any image files</div>
@@ -121,7 +121,7 @@
     {{#if selected}}
     {{fileImage collection="Images" class="imgItem selected"}}
     {{else}}
-    {{fileImage collection="Images" class="imgItem"}}<br/>{{cfsDownloadButton "Images" class="glyphicon glyphicon-cloud-download"}}
+    {{fileImage collection="Images" class="imgItem"}}{{cfsDownloadButton "Images" class="glyphicon glyphicon-cloud-download"}}
     {{/if}}
 </template>
 
