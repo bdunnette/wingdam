@@ -1,6 +1,4 @@
-collection-api
-collectionFS
-bootstrap-less
-bootstrap3-less
-meteor-file
 bootstrap-3
+collectionFS
+accounts-ui-bootstrap-3
+handlebar-helpers

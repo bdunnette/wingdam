@@ -3,14 +3,12 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
-standard-app-packages
-autopublish
-insecure
 preserve-inputs
+underscore
+accounts-password
+collectionFS
 accounts-ui
-accounts-google
 jquery
-collection-api
-less
-meteor-file
+standard-app-packages
+accounts-google
 bootstrap-3
