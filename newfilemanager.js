@@ -13,17 +13,9 @@ var allowRules = {
         return userId && file.owner === userId;
     }
 };
-Songs.allow(allowRules);
 Images.allow(allowRules);
 
 //filters
-Songs.filter({
-    allow: {
-        contentTypes: ['audio/*']
-    },
-    maxSize: 5242880 //5MB
-});
-
 Images.filter({
     allow: {
         contentTypes: ['image/*']
@@ -39,20 +31,11 @@ if (Meteor.isClient) {
     });
 
     //data subscriptions
-    Meteor.subscribe("songs");
     Meteor.subscribe("images");
 
     Images.acceptDropsOn("imgListArea", ".imgList");
-    Songs.acceptDropsOn("audioListArea", ".audioList");
-
+    
     //events
-    Template.audioListArea.events({
-        'click #addAudio': function(e) {
-            e.preventDefault();
-            Session.set("visibleDialog", "song.add");
-        }
-    });
-
     Template.imgListArea.events({
         'click #addImage': function(e) {
             e.preventDefault();
@@ -81,9 +64,6 @@ if (Meteor.isClient) {
             });
         }
     };
-    Songs.events({
-       'invalid': onInvalid 
-    });
     Images.events({
        'invalid': onInvalid 
     });
@@ -111,7 +91,7 @@ if (Meteor.isClient) {
             style = "display: none";
             window[hash.collection].retrieveBlob(file._id, function(fileItem) {
                 if (fileItem.blob || fileItem.file) {
-                    var fileReader = new FileReader();
+					var fileReader = new FileReader();
                     fileReader.onload = function(oFREvent) {
                         if (!dataUrlCache[file._id + "_" + file.length]) {
                             dataUrlCache[file._id + "_" + file.length] = oFREvent.target.result;
@@ -124,6 +104,7 @@ if (Meteor.isClient) {
                 }
             });
         }
+        console.log(file);
         return new Handlebars.SafeString('<img src="' + src + '" data-cfs-collection="' + hash.collection + '" data-cfs-id="' + file._id + '" style="' + style + '" class="' + (hash.class || '') + '" />');
     });
     
@@ -145,19 +126,14 @@ if (Meteor.isClient) {
     });
 
     //upload buttons
-    Template.dialogAddSong.events({
-        'click .save': function(e, template) {
-            e.preventDefault();
-            var files = template.find('input.fileSelect').files;
-            Songs.storeFiles(files);
-            Session.set("visibleDialog", null);
-        }
-    });
     Template.dialogAddImg.events({
         'click .save': function(e, template) {
             e.preventDefault();
             var files = template.find('input.fileSelect').files;
-            Images.storeFiles(files);
+            console.log(files);
+            for (file in files) {
+				Images.storeFile(file, {title: file.filename});
+			};
             Session.set("visibleDialog", null);
         }
     });
